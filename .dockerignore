@@ -1,0 +1,26 @@
+# Entornos virtuales y cachés
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+*.env
+
+# Configuración local
+.vscode
+.editorconfig
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Pruebas y documentación
+tests
+docs
+README.md
+
+# Dependencias instaladas localmente
+venv
+.env.example

@@ -9,16 +9,11 @@ venv/
 
 # Archivos de configuración
 *.env
-.env.*
+#.env.*
 
 # Archivos de base de datos
 *.db
 *.sqlite3
-
-# Archivos de Docker
-.dockerignore
-docker-compose.yml
-Dockerfile
 
 # Otros
 .DS_Store
