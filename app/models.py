@@ -162,3 +162,41 @@ class ReservationOut(BaseModel):
     first_name: Optional[str] = None        
     last_name: Optional[str] = None         
     email: Optional[str] = None 
+
+# Modelos para administración de usuarios
+class UsuarioUpdate(BaseModel):
+    """
+    Modelo para actualizar un usuario (mapeado desde frontend).
+    Acepta campos del frontend y los traduce a backend_soul.
+    
+    Attributes:
+        nombre_completo (Optional[str]): Nombre completo del usuario.
+        telefono (Optional[str]): Teléfono del usuario.
+        rol (Optional[str]): Rol del usuario (Cliente, Estilista, Admin).
+        estado (Optional[bool]): Estado del usuario (activo/inactivo).
+    """
+    nombre_completo: Optional[str] = None
+    telefono: Optional[str] = None
+    rol: Optional[str] = None
+    estado: Optional[bool] = None
+
+class UsuarioListOut(BaseModel):
+    """
+    Modelo para la respuesta de listado de usuarios.
+    
+    Attributes:
+        id_user (int): ID del usuario.
+        email (EmailStr): Correo del usuario.
+        first_name (Optional[str]): Nombre del usuario.
+        last_name (Optional[str]): Apellido del usuario.
+        phone (Optional[str]): Teléfono del usuario.
+        id_role (int): ID del rol.
+        state (bool): Estado del usuario.
+    """
+    id_user: int
+    email: EmailStr
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None
+    phone: Optional[str] = None
+    id_role: int
+    state: bool

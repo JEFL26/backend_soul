@@ -8,7 +8,10 @@ def build_response(
     success: bool = True,
     message: str = "",
     data: Optional[Any] = None,
-    code: int = status.HTTP_200_OK
+    code: int = status.HTTP_200_OK,
+    total: Optional[int] = None,
+    page: Optional[int] = None,
+    page_size: Optional[int] = None
 ) -> JSONResponse:
     """
     Construye una respuesta HTTP uniforme para todos los endpoints de la API.
@@ -18,6 +21,9 @@ def build_response(
       - message (str): Mensaje descriptivo de la operación.
       - data (Any, opcional): Datos que se desean devolver al cliente.
       - code (int): Código HTTP de la respuesta (por defecto 200 OK).
+      - total (int, opcional): Total de registros (para paginación).
+      - page (int, opcional): Página actual (para paginación).
+      - page_size (int, opcional): Tamaño de página (para paginación).
     
     Retorna:
       - JSONResponse: Objeto JSON listo para devolver al cliente, con estructura:
@@ -25,7 +31,10 @@ def build_response(
             "success": bool,
             "message": str,
             "data": any,
-            "code": int
+            "code": int,
+            "total": int (opcional),
+            "page": int (opcional),
+            "page_size": int (opcional)
           }
         y con el status_code HTTP correspondiente.
     """
@@ -35,6 +44,14 @@ def build_response(
         "data": data,
         "code": int(code)
     }
+    
+    # Agregar parámetros de paginación si se proporcionan
+    if total is not None:
+        payload["total"] = total
+    if page is not None:
+        payload["page"] = page
+    if page_size is not None:
+        payload["page_size"] = page_size
 
     return JSONResponse(content=payload, status_code=int(code))
 
